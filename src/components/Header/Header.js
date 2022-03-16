@@ -13,7 +13,11 @@ const Header = (props) => {
       }}
     >
       <img src={props.logo} width="200px" alt="logo" />
-      <Navbar cars={props.cars} />
+      <Navbar
+        cars={props.cars}
+        selectedCarId={props.selectedCarId}
+        setSelectedCarId={props.setSelectedCarId}
+      />
     </div>
   );
 };

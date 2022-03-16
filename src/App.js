@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+
 import Header from "./components/Header/Header";
 import ProductsList from "./components/ProductsList/ProductsList";
+import AddCar from "./components/AddCar/AddCar";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
+  const [selectedCarId, setSelectedCarId] = useState(1);
+
   let logo = "https://pngimg.com/uploads/tesla_logo/tesla_logo_PNG21.png";
-  let cars = [
+  let initCars = [
     {
       model: "Model S",
       image:
@@ -29,10 +35,25 @@ const App = () => {
       id: 4,
     },
   ];
+  const [cars, setCars] = useState(initCars);
+  function addCar(newCar) {
+    let newCars = [newCar, ...cars];
+    setCars(newCars);
+  }
   return (
     <div>
-      <Header logo={logo} cars={cars} />
-      <ProductsList cars={cars} />
+      <Header
+        logo={logo}
+        cars={cars}
+        selectedCarId={selectedCarId}
+        setSelectedCarId={setSelectedCarId}
+      />
+      <AddCar addCar={addCar} />
+      <ProductsList
+        cars={cars}
+        selectedCarId={selectedCarId}
+        setSelectedCarId={setSelectedCarId}
+      />
     </div>
   );
 };
