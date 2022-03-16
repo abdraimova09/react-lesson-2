@@ -14,7 +14,14 @@ const ProductsList = (props) => {
   const [searchValue, setSearchValue] = useState("");
 
   // console.log(filtersVisibility);
-  let { cars, selectedCarId, setSelectedCarId } = props;
+  let {
+    cars,
+    selectedCarId,
+    setSelectedCarId,
+    deleteCar,
+    setCarToEdit,
+    setShow,
+  } = props;
   // console.log("This is props from productsList", cars);
   // console.log(searchValue);
   // console.log(selectedCarId);
@@ -51,6 +58,9 @@ const ProductsList = (props) => {
             key={item.id}
             selectedCarId={selectedCarId}
             setSelectedCarId={setSelectedCarId}
+            deleteCar={deleteCar}
+            setCarToEdit={setCarToEdit}
+            setShow={setShow}
           />
         ))}
       </div>
